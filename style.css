@@ -15,6 +15,28 @@
     padding-top: 20px;
 }
 
+.page-title {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    animation: pulse 0.3s infinite; 
+}
+
+@keyframes pulse {
+    0% {
+        color: white;
+        opacity: 1;
+    }
+    50% {
+        color: black;
+        opacity: 0.2; 
+    }
+    100% {
+        color: white;
+        opacity: 1;
+    }
+}
+
 .input-button-wrapper {
     width: 300px;
     height: 60px;
