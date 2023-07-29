@@ -1,50 +1,50 @@
-let userData = [];
+let toDoData = [];
 let counter = 0;
 const mainBlock = document.getElementById("main-block");
 const input = document.getElementById("input");
 const button = document.getElementById("button");
 
-const AddUser = () => {
+const AddToDo = () => {
   if(input.value === "") {
-    alert("User Name Should be written")
+    alert("To Do Input Should not be empty")
   } else {
     counter++;
-    userData.push({
-      userName: input.value,
+    toDoData.push({
+      toDoName: input.value,
       id: counter
     });
     input.value = "";
-    renderUsers();
+    renderToDos();
   }
 };
 
-const renderUsers = () => {
+const renderToDos = () => {
   mainBlock.innerHTML = "";
 
-  userData.map((element) => {
+  toDoData.map((element) => {
     const bigDiv = document.createElement("div");
     bigDiv.classList.add("parent-wrapper")
-    const userSpan = document.createElement("span");
-    const userSpanText = document.createTextNode(element.userName);
-    userSpan.appendChild(userSpanText);
+    const ToDoElement = document.createElement("span");
+    const toDoText = document.createTextNode(element.toDoName);
+    ToDoElement.appendChild(toDoText);
 
-    const userDeleteButton = document.createElement("button");
-    userDeleteButton.innerHTML = "Delete";
-    userDeleteButton.classList.add("deleteButton");
+    const toDoDeleteButton = document.createElement("button");
+    toDoDeleteButton.innerHTML = "Delete";
+    toDoDeleteButton.classList.add("deleteButton");
 
-    userDeleteButton.addEventListener("click", () => {
-      deleteUser(element.id);
+    toDoDeleteButton.addEventListener("click", () => {
+      deleteToDo(element.id);
     });
 
-    bigDiv.appendChild(userSpan);
-    bigDiv.appendChild(userDeleteButton)
+    bigDiv.appendChild(ToDoElement);
+    bigDiv.appendChild(toDoDeleteButton)
     mainBlock.appendChild(bigDiv);
   });
 };
 
-const deleteUser = (userId) => {
-  userData = userData.filter((user) => user.id !== userId);
-  renderUsers();
+const deleteToDo = (toDoId) => {
+  toDoData = toDoData.filter((toDo) => toDo.id !== toDoId);
+  renderToDos();
 };
 
 
